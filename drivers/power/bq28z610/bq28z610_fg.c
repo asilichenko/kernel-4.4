@@ -597,7 +597,7 @@ static int fg_mac_write_block(struct bq_fg_chip *bq, u16 cmd, u8 *data, u8 len)
 	for (i = 0; i < len; i++)
 		t_buf[i+2] = data[i];
 
-	cksum = checksum(data, len + 2);
+	cksum = checksum(t_buf, len + 2);
 	/*write command/addr, data*/
 	ret = fg_write_block(bq, bq->regs[BQ_FG_REG_ALT_MAC], t_buf, len + 2);
 	if (ret < 0)
